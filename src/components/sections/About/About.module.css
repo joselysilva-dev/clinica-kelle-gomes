@@ -1,0 +1,165 @@
+.about {
+  width: 100%;
+  padding: 120px 0;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #fdf9f6 100%
+  );
+}
+
+.container {
+  width: min(1280px, 92%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.imageArea {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 28px;
+  object-fit: cover;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.12);
+  transition: .4s;
+}
+
+.image:hover {
+  transform: scale(1.02);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.badge {
+  width: fit-content;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #fde9e2;
+  color: #a26a4b;
+  font-weight: 600;
+  font-size: .9rem;
+}
+
+.content h2 {
+  font-size: clamp(2.4rem,4vw,3.5rem);
+  line-height: 1.1;
+  color: #2b1f1a;
+}
+
+.content p {
+  font-size: 1.05rem;
+  color: #666;
+  line-height: 1.9;
+}
+
+.features {
+  display: grid;
+  gap: 18px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #444;
+  font-weight: 500;
+}
+
+.feature svg {
+  color: #b06d4f;
+}
+
+.stats {
+  display: flex;
+  gap: 50px;
+  margin-top: 12px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat h3 {
+  color: #b06d4f;
+  font-size: 2rem;
+  margin-bottom: 4px;
+}
+
+.stat span {
+  color: #777;
+  font-size: .95rem;
+}
+
+.button {
+  width: fit-content;
+  padding: 16px 32px;
+  border-radius: 14px;
+  background: #b06d4f;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: .35s;
+}
+
+.button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 35px rgba(176,109,79,.28);
+}
+
+@media (max-width: 992px) {
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    text-align: center;
+  }
+
+  .imageArea {
+    order: -1;
+  }
+
+  .badge,
+  .button {
+    margin: 0 auto;
+  }
+
+  .features {
+    justify-items: center;
+  }
+
+  .stats {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+}
+
+@media (max-width:768px){
+
+.about{
+padding:80px 0;
+}
+
+.content h2{
+font-size:2.3rem;
+}
+
+.stats{
+flex-direction:column;
+gap:28px;
+}
+
+}

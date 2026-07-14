@@ -1,6 +1,6 @@
 ﻿import { Helmet } from 'react-helmet-async';
 import { Card } from '@/components/ui/Card';
-import { CTA } from '@/components/sections/CTA';
+import CTA from "@/components/sections/CTA"; 
 
 const values = ['Excelência', 'Segurança', 'Humanização', 'Evidência científica'];
 
