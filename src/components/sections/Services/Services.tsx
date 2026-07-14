@@ -1,17 +1,43 @@
-﻿import { Card } from '@/components/ui/Card';
+﻿import { motion } from "framer-motion";
+import { services } from "./services.data";
+import ServiceCard from "./ServiceCard";
+import styles from "./Services.module.css";
 
-const services = ['Harmonizacao facial', 'Bioestimuladores', 'Laser avancado', 'Protocolos corporais'];
-
-export function Services() {
+export default function Services() {
   return (
-    <section className="container" style={{ paddingBottom: '3rem' }}>
-      <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
-        {services.map((item) => (
-          <Card key={item}>
-            <h3>{item}</h3>
-            <p>Protocolo personalizado com acompanhamento especializado.</p>
-          </Card>
-        ))}
+    <section
+      id="procedimentos"
+      className={styles.services}
+    >
+      <div className={styles.container}>
+        <motion.div
+          className={styles.header}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <span>
+            Procedimentos
+          </span>
+
+          <h2>
+            Tratamentos personalizados para cada necessidade.
+          </h2>
+
+          <p>
+            Tecnologia, ciência e naturalidade para proporcionar
+            resultados elegantes e seguros.
+          </p>
+        </motion.div>
+
+        <div className={styles.grid}>
+          {services.map(service => (
+            <ServiceCard
+              key={service.id}
+              service={service}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -7,10 +7,15 @@
     "moduleResolution": "bundler",
     "strict": true,
     "skipLibCheck": true,
+
+    "ignoreDeprecations": "6.0",
+
     "baseUrl": "./src",
+
     "paths": {
       "@/*": ["*"]
     }
   },
+
   "include": ["src"]
 }
