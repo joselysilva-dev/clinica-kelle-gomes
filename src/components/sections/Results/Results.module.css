@@ -1,0 +1,38 @@
+.results{
+    padding:120px 0;
+    background:#fffaf7;
+}
+
+.container{
+    width:min(1280px,92%);
+    margin:auto;
+}
+
+.header{
+    max-width:700px;
+    margin:auto;
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.header span{
+    color:#b06d4f;
+    font-weight:700;
+}
+
+.header h2{
+    font-size:3rem;
+    margin:18px 0;
+    color:#2f211d;
+}
+
+.header p{
+    color:#666;
+    line-height:1.8;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
+    gap:35px;
+}

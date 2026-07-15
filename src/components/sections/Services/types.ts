@@ -1,8 +1,8 @@
 export interface Service {
   id: number;
   title: string;
+  category: string;
   description: string;
   duration: string;
-  category: string;
   image: string;
 }
