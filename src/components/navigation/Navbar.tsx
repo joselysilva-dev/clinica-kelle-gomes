@@ -1,39 +1,57 @@
-﻿import { NavLink } from 'react-router-dom';
-import { SunMoon } from 'lucide-react';
-import { useTheme } from '@/providers/ThemeProvider';
-import styles from './Navbar.module.css';
+﻿import { useEffect, useState } from "react";
+import { CalendarDays } from "lucide-react";
+import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
 
-const links = [
-  { to: '/', label: 'Home' },
-  { to: '/sobre', label: 'Sobre' },
-  { to: '/procedimentos', label: 'Procedimentos' },
-  { to: '/galeria', label: 'Galeria' },
-  { to: '/blog', label: 'Blog' },
-  { to: '/contato', label: 'Contato' }
-];
+import Logo from "./Logo";
+import NavLinks from "./NavLinks";
+import MobileMenu from "./MobileMenu";
 
-export function Navbar() {
-  const { toggleTheme } = useTheme();
+import styles from "./Navbar.module.css";
+
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <nav className={styles.nav} aria-label="Navegacao principal">
-      <div className="container">
-        <div className={styles.wrapper}>
-          <NavLink to="/" className={styles.logo}>
-           Dra. Kelle Gomes
+    <motion.header
+      className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}
+      initial={{ y: -80 }}
+      animate={{ y: 0 }}
+      transition={{
+        duration: 0.6,
+        ease: "easeOut"
+      }}
+    >
+      <div className={styles.container}>
+        <Logo />
+
+        <NavLinks />
+
+        <div className={styles.actions}>
+          <NavLink
+            to="/contato"
+            className={styles.ctaButton}
+          >
+            <CalendarDays size={18} />
+
+            <span>Agendar Consulta</span>
           </NavLink>
-          <ul className={styles.links}>
-            {links.map((link) => (
-              <li key={link.to}>
-                <NavLink to={link.to}>{link.label}</NavLink>
-              </li>
-            ))}
-          </ul>
-          <button className={styles.themeBtn} onClick={toggleTheme} aria-label="Alternar tema">
-            <SunMoon size={18} />
-          </button>
+
+          <MobileMenu />
         </div>
       </div>
-    </nav>
+    </motion.header>
   );
 }

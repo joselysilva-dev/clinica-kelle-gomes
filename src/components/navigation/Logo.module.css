@@ -1,0 +1,23 @@
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all .35s ease;
+}
+
+.logo:hover {
+  transform: scale(1.03);
+}
+
+.logoImage {
+  width: 180px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .logoImage {
+    width: 145px;
+  }
+}
