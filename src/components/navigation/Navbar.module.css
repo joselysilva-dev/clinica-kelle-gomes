@@ -4,231 +4,202 @@
 
 .header {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0 0 auto 0;
 
   width: 100%;
-  height: 80px;
+  height: 90px;
 
-  z-index: 999;
+  z-index: 1000;
 
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.78);
 
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  border-bottom: 1px solid rgba(218, 218, 218, 0.35);
 
-  transition: all 0.35s ease;
+  transition: all .35s ease;
 }
 
-/* Estado após scroll */
-
 .scrolled {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255,255,255,.95);
 
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow:
+      0 15px 40px rgba(0,0,0,.06);
 }
 
 /* ===========================
    CONTAINER
 =========================== */
 
-.container {
-  width: min(1280px, 92%);
-  height: 100%;
+.container{
+    width:min(1320px,92%);
+    height:100%;
 
-  margin: auto;
+    margin:auto;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:3rem;
 }
 
 /* ===========================
    NAVIGATION
 =========================== */
 
-.navigation {
-  display: flex;
-  align-items: center;
+.navigation{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    flex:1;
 }
 
-.links {
-  display: flex;
+.links{
+    display:flex;
+    align-items:center;
 
-  gap: 2rem;
+    gap:2.3rem;
 
-  list-style: none;
+    list-style:none;
 }
 
-.link {
-  position: relative;
+.linkButton{
 
-  text-decoration: none;
+    border:none;
+    background:none;
 
-  color: var(--text-primary);
+    cursor:pointer;
 
-  font-weight: 500;
+    position:relative;
 
-  letter-spacing: 0.03em;
+    padding:0;
 
-  transition: all 0.3s ease;
+    color:var(--text-primary);
+
+    font-size:.95rem;
+    font-weight:500;
+
+    transition:.3s;
 }
 
-.link::after {
-  content: "";
+.linkButton::after{
 
-  position: absolute;
+    content:"";
 
-  left: 0;
-  bottom: -8px;
+    position:absolute;
 
-  width: 0;
+    left:0;
+    bottom:-8px;
 
-  height: 2px;
+    width:0;
 
-  border-radius: 999px;
+    height:2px;
 
-  background: linear-gradient(
-    90deg,
-    #d9b38c,
-    #f3dfca
-  );
+    border-radius:999px;
 
-  transition: width 0.3s ease;
+    background:linear-gradient(
+        90deg,
+        #D8B788,
+        #F4E2C9
+    );
+
+    transition:.3s;
 }
 
-.link:hover {
-  color: var(--color-primary);
+.linkButton:hover{
+
+    color:var(--color-primary);
 }
 
-.link:hover::after {
-  width: 100%;
-}
+.linkButton:hover::after{
 
-.active {
-  color: var(--color-primary);
-}
-
-.active::after {
-  width: 100%;
+    width:100%;
 }
 
 /* ===========================
    ACTIONS
 =========================== */
 
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.actions{
+
+    display:flex;
+    align-items:center;
+
+    gap:1rem;
 }
 
 /* ===========================
-   CTA BUTTON
+   CTA
 =========================== */
 
-.ctaButton {
-  position: relative;
+.ctaButton{
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: .6rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-  min-width: 220px;
-  height: 56px;
+    gap:.6rem;
 
-  padding: 0 2rem;
+    height:52px;
 
-  border-radius: 999px;
+    padding:0 1.8rem;
 
-  text-decoration: none;
+    border:none;
+    border-radius:999px;
 
-  color: #fff;
+    cursor:pointer;
 
-  font-size: .95rem;
-  font-weight: 600;
-  letter-spacing: .5px;
+    color:#fff;
 
-  background: linear-gradient(
-    135deg,
-    #d8b788,
-    #c9a16b
-  );
+    background:linear-gradient(
+        135deg,
+        #D8B788,
+        #C9A16B
+    );
 
-  box-shadow:
-    0 10px 25px rgba(201,161,107,.22);
+    box-shadow:
+        0 10px 25px rgba(201,161,107,.22);
 
-  overflow: hidden;
-
-  transition: all .35s ease;
+    transition:.35s;
 }
 
-.ctaButton::before {
+.ctaButton:hover{
 
-  content: "";
+    transform:translateY(-2px);
 
-  position: absolute;
-
-  top: 0;
-  left: -120%;
-
-  width: 60%;
-  height: 100%;
-
-  background: linear-gradient(
-      120deg,
-      transparent,
-      rgba(255,255,255,.35),
-      transparent
-  );
-
-  transition: .8s;
+    box-shadow:
+        0 18px 35px rgba(201,161,107,.28);
 }
 
+.ctaButton:focus-visible{
 
-/* ===========================
-   CTA BUTTON HOVER
-=========================== */
+    outline:3px solid rgba(201,161,107,.3);
 
-.ctaButton:hover {
-  transform: translateY(-2px) scale(1.02);
-
-  box-shadow:
-    0 18px 35px rgba(202, 164, 107, 0.30);
-
-  letter-spacing: 1px;
-}
-
-.ctaButton:hover::before {
-  left: 140%;
-}
-
-/* ===========================
-   ACESSIBILIDADE
-=========================== */
-
-.ctaButton:focus-visible {
-  outline: 3px solid rgba(201, 161, 107, 0.35);
-  outline-offset: 4px;
+    outline-offset:4px;
 }
 
 /* ===========================
    RESPONSIVO
 =========================== */
 
-@media (max-width: 992px) {
+@media (max-width:992px){
 
-  .navigation {
-    display: none;
-  }
+    .navigation{
+        display:none;
+    }
 
-  .ctaButton {
-    display: none;
-  }
+    .ctaButton{
+        display:none;
+    }
+
+    .container{
+
+        width:92%;
+
+        justify-content:space-between;
+    }
 
 }

@@ -1,6 +1,5 @@
 ﻿import { useEffect, useState } from "react";
 import { CalendarDays } from "lucide-react";
-import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import Logo from "./Logo";
@@ -19,10 +18,15 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  function scrollToContact() {
+    document.getElementById("contato")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
 
   return (
     <motion.header
@@ -31,23 +35,26 @@ export default function Navbar() {
       animate={{ y: 0 }}
       transition={{
         duration: 0.6,
-        ease: "easeOut"
+        ease: "easeOut",
       }}
     >
       <div className={styles.container}>
         <Logo />
 
-        <NavLinks />
+        <nav className={styles.navigation}>
+          <NavLinks />
+        </nav>
 
         <div className={styles.actions}>
-          <NavLink
-            to="/contato"
+          <button
+            type="button"
             className={styles.ctaButton}
+            onClick={scrollToContact}
           >
             <CalendarDays size={18} />
 
-            <span>Agendar Consulta</span>
-          </NavLink>
+            <span>Agendar Avaliação</span>
+          </button>
 
           <MobileMenu />
         </div>

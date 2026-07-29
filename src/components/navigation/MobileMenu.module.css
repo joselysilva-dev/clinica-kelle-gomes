@@ -1,60 +1,153 @@
-.menuButton{
+.menuButton {
+  display: none;
 
-display:none;
+  width: 52px;
+  height: 52px;
 
-border:none;
+  align-items: center;
+  justify-content: center;
 
-background:none;
+  border: 1px solid rgba(216, 183, 136, 0.18);
+  border-radius: 16px;
 
-cursor:pointer;
+  background: rgba(255, 255, 255, 0.82);
 
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  color: var(--text-primary);
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+
+  z-index: 1002;
 }
 
-.drawer{
+.menuButton:hover {
+  background: #fff;
 
-position:fixed;
+  transform: translateY(-2px);
 
-top:0;
-right:0;
-
-width:320px;
-
-height:100vh;
-
-background:#fff;
-
-display:flex;
-
-flex-direction:column;
-
-padding:6rem 2rem;
-
-gap:2rem;
-
-box-shadow:-20px 0 60px rgba(0,0,0,.1);
-
-z-index:999;
-
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
 }
 
-.drawer a{
-
-text-decoration:none;
-
-font-size:1.1rem;
-
-color:var(--text-primary);
-
-font-weight:600;
-
+.menuButton:focus-visible {
+  outline: 3px solid rgba(201, 161, 107, 0.3);
+  outline-offset: 4px;
 }
 
-@media(max-width:992px){
+/* ===========================
+   OVERLAY
+=========================== */
 
-.menuButton{
+.overlay {
+  position: fixed;
+  inset: 0;
 
-display:block;
+  background: rgba(0, 0, 0, 0.45);
 
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  z-index: 998;
 }
 
+/* ===========================
+   DRAWER
+=========================== */
+
+.drawer {
+  position: fixed;
+
+  top: 0;
+  right: 0;
+
+  width: min(380px, 92vw);
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 8rem 2.5rem 3rem;
+
+  background: rgba(255, 255, 255, 0.97);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.12);
+
+  overflow-y: auto;
+
+  z-index: 999;
+}
+
+/* ===========================
+   LINKS
+=========================== */
+
+.link {
+  width: 100%;
+
+  padding: 1rem 0;
+
+  background: transparent;
+
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+  text-align: left;
+
+  cursor: pointer;
+
+  color: var(--text-primary);
+
+  font-size: 1.05rem;
+  font-weight: 500;
+
+  letter-spacing: 0.02em;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease,
+    padding-left 0.3s ease;
+}
+
+.link:hover {
+  color: var(--color-primary);
+
+  transform: translateX(6px);
+
+  padding-left: 0.35rem;
+}
+
+.link:last-child {
+  border-bottom: none;
+}
+
+/* ===========================
+   RESPONSIVO
+=========================== */
+
+@media (max-width: 992px) {
+  .menuButton {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .drawer {
+    width: 100%;
+    padding: 7rem 2rem 2rem;
+  }
+
+  .link {
+    font-size: 1rem;
+  }
 }

@@ -1,32 +1,37 @@
 export const navigation = [
   {
-    id: "home",
+    id: "hero",
     label: "Início",
-    href: "/",
+    href: "hero",
   },
   {
-    id: "about",
+    id: "sobre",
     label: "Sobre",
-    href: "/sobre",
+    href: "sobre",
   },
   {
-    id: "services",
+    id: "procedimentos",
     label: "Procedimentos",
-    href: "/procedimentos",
+    href: "procedimentos",
   },
   {
-    id: "gallery",
-    label: "Galeria",
-    href: "/galeria",
+    id: "cursos",
+    label: "Cursos",
+    href: "cursos",
   },
   {
-    id: "blog",
-    label: "Blog",
-    href: "/blog",
+    id: "antesDepois",
+    label: "Antes e Depois",
+    href: "antes-depois",
   },
   {
-    id: "contact",
+    id: "depoimentos",
+    label: "Depoimentos",
+    href: "depoimentos",
+  },
+  {
+    id: "contato",
     label: "Contato",
-    href: "/contato",
+    href: "contato",
   },
 ];

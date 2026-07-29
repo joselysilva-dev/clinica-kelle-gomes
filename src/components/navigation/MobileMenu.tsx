@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -10,8 +9,21 @@ import styles from "./MobileMenu.module.css";
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
 
+  function toggleMenu() {
+    setOpen((prev) => !prev);
+  }
+
   function closeMenu() {
     setOpen(false);
+  }
+
+  function scrollToSection(sectionId: string) {
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+
+    closeMenu();
   }
 
   return (
@@ -19,7 +31,7 @@ export default function MobileMenu() {
       <button
         type="button"
         className={styles.menuButton}
-        onClick={() => setOpen((prev) => !prev)}
+        onClick={toggleMenu}
         aria-label={open ? "Fechar menu" : "Abrir menu"}
         aria-expanded={open}
         aria-controls="mobile-navigation"
@@ -47,22 +59,18 @@ export default function MobileMenu() {
               exit={{ x: "100%" }}
               transition={{
                 duration: 0.35,
-                ease: "easeInOut",
+                ease: [0.22, 1, 0.36, 1],
               }}
             >
               {navigation.map((item) => (
-                <NavLink
+                <button
                   key={item.id}
-                  to={item.href}
-                  onClick={closeMenu}
-                  className={({ isActive }) =>
-                    isActive
-                      ? `${styles.link} ${styles.active}`
-                      : styles.link
-                  }
+                  type="button"
+                  className={styles.link}
+                  onClick={() => scrollToSection(item.href)}
                 >
                   {item.label}
-                </NavLink>
+                </button>
               ))}
             </motion.nav>
           </>

@@ -1,25 +1,27 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CalendarDays } from "lucide-react";
+
 import styles from "./Hero.module.css";
 
 export default function HeroButtons() {
   return (
-    <div className={styles.heroButtons}>
+    <div className={styles.buttons}>
+
       <a
-        href="https://wa.me/55999999999"
-        target="_blank"
-        rel="noreferrer"
-        className={styles.btnPrimary}
+        href="#contato"
+        className={styles.primaryButton}
       >
-        Agendar avaliação
+        <CalendarDays size={18} />
+        <span>Agendar Consulta</span>
       </a>
 
       <a
-        href="#procedimentos"
-        className={styles.btnSecondary}
+        href="#services"
+        className={styles.secondaryButton}
       >
-        Conhecer procedimentos
+        <span>Conhecer Procedimentos</span>
         <ArrowRight size={18} />
       </a>
+
     </div>
   );
 }

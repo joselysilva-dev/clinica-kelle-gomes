@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Clock } from "lucide-react";
+
 import { Service } from "./types";
+
 import styles from "./ServiceCard.module.css";
 
 interface Props {
@@ -11,31 +13,40 @@ export default function ServiceCard({ service }: Props) {
   return (
     <motion.article
       className={styles.card}
-      whileHover={{ y: -8 }}
-      transition={{ duration: .3 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.35 }}
     >
-      <img
-        src={service.image}
-        alt={service.title}
-        className={styles.image}
-      />
+      <div className={styles.imageWrapper}>
+        <img
+          src={service.image}
+          alt={service.title}
+          className={styles.image}
+          loading="lazy"
+        />
 
-      <div className={styles.content}>
         <span className={styles.category}>
           {service.category}
         </span>
+      </div>
 
+      <div className={styles.content}>
         <h3>{service.title}</h3>
 
         <p>{service.description}</p>
 
         <div className={styles.footer}>
-          <span>
+          <span className={styles.duration}>
             <Clock size={16} />
             {service.duration}
           </span>
 
-          <button>
+          <button
+            type="button"
+            className={styles.button}
+          >
             Saiba mais
           </button>
         </div>

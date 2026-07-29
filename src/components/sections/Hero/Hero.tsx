@@ -1,33 +1,43 @@
 ﻿import { motion } from "framer-motion";
+
 import HeroButtons from "./HeroButtons";
 import HeroStats from "./HeroStats";
-import FloatingCards from "./FloatingCards";
+
+import profile from "@/assets/profile/dra-kelle-perfil.webp";
+
 import styles from "./Hero.module.css";
 
 export default function Hero() {
   return (
-    <section className={styles.hero} id="home">
+    <section
+      className={styles.hero}
+      id="inicio"
+    >
       <div className={styles.container}>
         <motion.div
           className={styles.content}
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.7,
+            ease: "easeOut",
+          }}
         >
           <span className={styles.badge}>
-            ✨ Estética Avançada
+            Estética Avançada
           </span>
 
           <h1>
-            Resultados naturais com ciência,
-            <br />
-            técnica e elegância.
+            Beleza com
+            <span className={styles.highlight}>
+              {" "}naturalidade.
+            </span>
           </h1>
 
-          <p>
-            Protocolos personalizados para harmonização facial,
-            corporal e rejuvenescimento com tecnologia moderna e
-            atendimento humanizado.
+          <p className={styles.description}>
+            Protocolos personalizados que unem ciência,
+            tecnologia e cuidado para valorizar a sua beleza
+            de forma segura e individualizada.
           </p>
 
           <HeroButtons />
@@ -36,18 +46,34 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          className={styles.imageArea}
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
+          className={styles.imageContainer}
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.8,
+            delay: 0.15,
+            ease: "easeOut",
+          }}
         >
+          <div className={styles.imageBackground} />
+
           <img
-            src="/images/dra-kelle.png"
+            src={profile}
             alt="Dra. Kelle Gomes"
             className={styles.image}
+            loading="eager"
+            decoding="async"
           />
 
-          <FloatingCards />
+          <div className={styles.experience}>
+            <strong>+10</strong>
+
+            <span>
+              anos de
+              <br />
+              experiência
+            </span>
+          </div>
         </motion.div>
       </div>
     </section>
