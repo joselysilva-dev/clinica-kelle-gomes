@@ -1,26 +1,2 @@
-﻿import { Button } from "@/components/ui/Button";
-
-export default function CTA() {
-  return (
-    <section
-      className="container"
-      style={{
-        padding: "2rem",
-        margin: "2rem auto",
-        background: "var(--color-surface)",
-        borderRadius: 20,
-        border: "1px solid var(--color-border)",
-      }}
-    >
-      <h3>Pronta para transformar sua experiência de autocuidado?</h3>
-
-      <p>
-        Fale com nossa equipe e receba uma orientação personalizada.
-      </p>
-
-      <Button>
-        Quero meu plano
-      </Button>
-    </section>
-  );
-}
+import{ArrowRight}from"lucide-react";import styles from"./CTA.module.css";
+export default function CTA(){return <section className={styles.cta} aria-labelledby="cta-title"><div><span>Seu cuidado começa aqui</span><h2 id="cta-title">Uma experiência estética feita para você.</h2><p>Converse com a equipe e agende sua avaliação individualizada.</p><a href="#contato">Agendar Consulta <ArrowRight size={18}/></a></div></section>}

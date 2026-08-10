@@ -24,6 +24,7 @@ export function GalleryItem({
           alt={item.title}
           className={styles.image}
           loading="lazy"
+          decoding="async"
         />
 
         <div className={styles.overlay}>
@@ -51,7 +52,7 @@ export function GalleryItem({
           onClick={onClick}
         >
           <Eye size={18} />
-          Ver Antes e Depois
+          Ver antes e depois
         </button>
       </div>
     </article>

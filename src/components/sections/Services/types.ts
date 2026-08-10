@@ -1,8 +1,1 @@
-export interface Service {
-  id: number;
-  title: string;
-  category: string;
-  description: string;
-  duration: string;
-  image: string;
-}
+export interface Service{id:string;title:string;category:string;description:string;image:string}

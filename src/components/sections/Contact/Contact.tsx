@@ -1,0 +1,3 @@
+import{Clock,Instagram,MapPin,MessageCircle}from"lucide-react";import styles from"./Contact.module.css";
+// TODO(Dra. Kelle): cadastrar WhatsApp, Instagram, endereço e horário oficiais.
+export function Contact(){return <section id="contato" className={styles.contact} aria-labelledby="contact-title"><div className={styles.container}><div><span>Contato</span><h2 id="contact-title">Vamos conversar?</h2><p>Entre em contato para conhecer as possibilidades de atendimento e cursos.</p></div><div className={styles.info}><p><MessageCircle/>WhatsApp: aguardando cadastro</p><p><Instagram/>Instagram: aguardando cadastro</p><p><MapPin/>Endereço: aguardando cadastro</p><p><Clock/>Horário: aguardando cadastro</p></div></div></section>}

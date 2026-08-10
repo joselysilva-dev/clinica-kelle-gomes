@@ -1,18 +1,12 @@
-﻿import { createBrowserRouter } from 'react-router-dom';
-import { MainLayout } from '@/layouts/MainLayout';
-import Home from '@/pages/Home';
-import NotFoundPage from '@/pages/NotFound';
-
-export const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <MainLayout />,
-    errorElement: <NotFoundPage />,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-    ],
-  },
+import{lazy,Suspense}from"react";import{createBrowserRouter}from"react-router-dom";import{MainLayout}from"@/layouts/MainLayout";import{AdminLayout}from"@/layouts/AdminLayout";import{AuthLayout}from"@/layouts/AuthLayout";import{PrivateRoute}from"./PrivateRoute";
+const page=(loader:()=>Promise<{default:React.ComponentType}>)=>{const Component=lazy(loader);return <Suspense fallback={<div className="container" role="status">Carregando…</div>}><Component/></Suspense>};
+export const router=createBrowserRouter([
+ {path:"/",element:<MainLayout/>,children:[
+  {index:true,element:page(()=>import("@/pages/Home"))},{path:"sobre",element:page(()=>import("@/pages/Sobre"))},{path:"procedimentos",element:page(()=>import("@/pages/Procedimentos"))},{path:"procedimentos/:slug",element:page(()=>import("@/pages/ProcedimentoDetalhe"))},{path:"antes-depois",element:page(()=>import("@/pages/AntesDepois"))},{path:"depoimentos",element:page(()=>import("@/pages/Depoimentos"))},{path:"contato",element:page(()=>import("@/pages/Contato"))},{path:"blog",element:page(()=>import("@/pages/Blog"))},{path:"blog/:slug",element:page(()=>import("@/pages/Artigo"))},{path:"equipe",element:page(()=>import("@/pages/Equipe"))},{path:"faq",element:page(()=>import("@/pages/FAQ"))},{path:"galeria",element:page(()=>import("@/pages/Galeria"))},{path:"politica",element:page(()=>import("@/pages/Politica"))},{path:"termos",element:page(()=>import("@/pages/Termos"))}
+ ]},
+ {element:<AuthLayout/>,children:[{path:"/login",element:page(()=>import("@/pages/Login"))}]},
+ {element:<PrivateRoute/>,children:[{path:"/admin",element:<AdminLayout/>,children:[
+  {index:true,element:page(()=>import("@/pages/Admin"))},{path:"dashboard",element:page(()=>import("@/pages/Admin"))},{path:"agenda",element:page(()=>import("@/pages/Admin/Agenda"))},{path:"blog",element:page(()=>import("@/pages/Admin/Blog"))},{path:"categorias",element:page(()=>import("@/pages/Admin/Categorias"))},{path:"configuracoes",element:page(()=>import("@/pages/Admin/Configuracoes"))},{path:"depoimentos",element:page(()=>import("@/pages/Admin/Depoimentos"))},{path:"galeria",element:page(()=>import("@/pages/Admin/Galeria"))},{path:"mensagens",element:page(()=>import("@/pages/Admin/Mensagens"))},{path:"pacientes",element:page(()=>import("@/pages/Admin/Pacientes"))},{path:"procedimentos",element:page(()=>import("@/pages/Admin/Procedimentos"))},{path:"uploads",element:page(()=>import("@/pages/Admin/Uploads"))},{path:"usuarios",element:page(()=>import("@/pages/Admin/Usuarios"))}
+ ]}]},
+ {path:"*",element:page(()=>import("@/pages/NotFound"))}
 ]);

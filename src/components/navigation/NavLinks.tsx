@@ -6,7 +6,12 @@ import styles from "./Navbar.module.css";
 
 export default function NavLinks() {
   function scrollToSection(sectionId: string) {
-    document.getElementById(sectionId)?.scrollIntoView({
+    const target = document.getElementById(sectionId);
+    if (!target) {
+      window.location.assign("/#" + sectionId);
+      return;
+    }
+    target.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });

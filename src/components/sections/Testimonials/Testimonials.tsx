@@ -1,1 +1,2 @@
-﻿export function Testimonials(){ return <section className='container'><h2>Testimonials</h2></section>; }
+import{MessageCircleHeart}from"lucide-react";import styles from"./Testimonials.module.css";
+export function Testimonials(){return <section id="depoimentos" className={styles.section} aria-labelledby="testimonials-title"><div className={styles.container}><MessageCircleHeart/><span>Depoimentos</span><h2 id="testimonials-title">Experiências compartilhadas com transparência</h2><p>Depoimentos reais e autorizados serão adicionados em breve.</p></div></section>}

@@ -1,1 +1,3 @@
-﻿export function Statistics(){ return <section className='container'><h2>Statistics</h2></section>; }
+import{HeartHandshake,ShieldCheck,Sparkles,WandSparkles}from"lucide-react";import styles from"./Statistics.module.css";
+const items=[[HeartHandshake,"Atendimento personalizado","Escuta e planejamento para cada pessoa."],[ShieldCheck,"Segurança","Cuidado responsável em todas as etapas."],[WandSparkles,"Tecnologia","Recursos alinhados a protocolos individualizados."],[Sparkles,"Naturalidade","Equilíbrio para valorizar sua identidade."]]as const;
+export function Statistics(){return <section className={styles.section} aria-labelledby="diferenciais-title"><div className={styles.container}><span>Diferenciais</span><h2 id="diferenciais-title">Cuidado pensado em cada detalhe</h2><div className={styles.grid}>{items.map(([Icon,title,text])=><article key={title}><Icon/><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>}

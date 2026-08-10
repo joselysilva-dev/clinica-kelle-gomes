@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { X } from "lucide-react";
 import styles from "./GalleryModal.module.css";
 import type { GalleryItemData } from "./types";
@@ -14,6 +14,7 @@ export function GalleryModal({
   open,
   onClose,
 }: GalleryModalProps) {
+  const closeRef = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     if (!open) return;
 
@@ -23,12 +24,16 @@ export function GalleryModal({
       }
     };
 
+    const previousOverflow = document.body.style.overflow;
+    const previousFocus = document.activeElement as HTMLElement | null;
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
+    closeRef.current?.focus();
 
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
+      previousFocus?.focus();
     };
   }, [open, onClose]);
 
@@ -48,6 +53,7 @@ export function GalleryModal({
       >
         <button
           type="button"
+          ref={closeRef}
           className={styles.close}
           onClick={onClose}
           aria-label="Fechar"
@@ -77,7 +83,7 @@ export function GalleryModal({
             <img
               src={item.before}
               alt={`${item.title} antes`}
-              loading="lazy"
+              decoding="async"
             />
           </div>
 
@@ -87,7 +93,7 @@ export function GalleryModal({
             <img
               src={item.after}
               alt={`${item.title} depois`}
-              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>

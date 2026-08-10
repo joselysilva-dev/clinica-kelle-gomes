@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -18,13 +18,32 @@ export default function MobileMenu() {
   }
 
   function scrollToSection(sectionId: string) {
-    document.getElementById(sectionId)?.scrollIntoView({
+    const target = document.getElementById(sectionId);
+    if (!target) {
+      window.location.assign("/#" + sectionId);
+      return;
+    }
+    target.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
 
     closeMenu();
   }
+
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeMenu();
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = previous;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [open]);
 
   return (
     <>

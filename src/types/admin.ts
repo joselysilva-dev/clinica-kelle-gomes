@@ -13,9 +13,11 @@ export type CrudField = {
   options?: CrudFieldOption[];
 };
 
+import type { ReactNode } from 'react';
+
 export type CrudColumn<T> = {
   label: string;
-  render: (item: T) => string | number | JSX.Element | null;
+  render: (item: T) => ReactNode;
 };
 
 export type CrudConfig<T extends Record<string, unknown>> = {
