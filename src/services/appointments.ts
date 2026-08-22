@@ -1,0 +1,6 @@
+import{apiClient}from"./api/client";export type RequestStatus="NEW"|"CONTACTED"|"CONFIRMED"|"CANCELLED"|"COMPLETED";export type AppointmentRequest={id:number;name:string;phone:string;procedure_name:string|null;city:string|null;preferred_date:string|null;preferred_period:"MORNING"|"AFTERNOON"|"ANY";notes:string|null;status:RequestStatus;created_at:string};
+export async function listAppointmentRequests(){return(await apiClient.get<AppointmentRequest[]>("/admin/appointments")).data}
+export async function updateAppointmentStatus(id:number,status:RequestStatus){return(await apiClient.patch<AppointmentRequest>("/admin/appointments/"+id+"/status",{status})).data}
+export async function getAppointmentDashboard(){return(await apiClient.get<{new_requests:number;awaiting_contact:number;confirmed:number;upcoming_schedules:number}>("/admin/appointments/dashboard")).data}
+export function normalizePhone(value:string){return value.replace(/\D/g,"")}
+export function clientWhatsApp(item:AppointmentRequest){const text="Olá, "+item.name+"! Aqui é da Clínica Dra. Kelle Gomes. Recebemos sua solicitação de agendamento pelo nosso site e vamos verificar a disponibilidade para você.";return "https://wa.me/"+normalizePhone(item.phone)+"?text="+encodeURIComponent(text)}

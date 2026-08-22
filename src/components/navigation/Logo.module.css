@@ -1,1 +1,1 @@
-.logo{display:flex;align-items:center;flex:none}.logoImage{display:block;width:clamp(135px,14vw,180px);height:auto}
+﻿.logo{display:flex;align-items:center;flex:none;max-width:150px}.logoImage{display:block;width:clamp(112px,10vw,146px);height:58px;object-fit:contain;object-position:left center}@media(max-width:540px){.logo{max-width:112px}.logoImage{width:108px;height:48px}}

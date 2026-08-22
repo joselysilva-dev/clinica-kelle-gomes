@@ -1,12 +1,2 @@
-﻿import { Card } from '@/components/ui/Card';
-
-export default function AdminHomePage() {
-	return (
-		<div className="grid" style={{ gap: '1rem' }}>
-			<Card>
-				<h2>Painel administrativo</h2>
-				<p>Use a navegação lateral para gerenciar usuários, conteúdo, agendamentos e configurações.</p>
-			</Card>
-		</div>
-	);
-}
+import{useQuery}from"@tanstack/react-query";import{Card}from"@/components/ui/Card";import{getAppointmentDashboard}from"@/services/appointments";
+export default function AdminHomePage(){const query=useQuery({queryKey:["appointment-dashboard"],queryFn:getAppointmentDashboard});const data=query.data;return <div className="grid"><h2>Visão geral</h2>{query.isError&&<p role="alert">Não foi possível carregar os indicadores.</p>}<div className="grid" style={{gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))"}}><Card><strong>{data?.new_requests??"—"}</strong><p>Novas solicitações</p></Card><Card><strong>{data?.awaiting_contact??"—"}</strong><p>Aguardando contato</p></Card><Card><strong>{data?.confirmed??"—"}</strong><p>Confirmadas</p></Card><Card><strong>{data?.upcoming_schedules??"—"}</strong><p>Próximas agendas</p></Card></div></div>}

@@ -1,4 +1,4 @@
-.menuButton {
+﻿.menuButton {
   display: none;
 
   width: 52px;
@@ -15,7 +15,7 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 
-  color: var(--text-primary);
+  color: var(--color-text);
 
   cursor: pointer;
 
@@ -106,7 +106,7 @@
 
   cursor: pointer;
 
-  color: var(--text-primary);
+  color: var(--color-text);
 
   font-size: 1.05rem;
   font-weight: 500;
@@ -135,7 +135,7 @@
    RESPONSIVO
 =========================== */
 
-@media (max-width: 992px) {
+@media (max-width: 1020px) {
   .menuButton {
     display: flex;
   }

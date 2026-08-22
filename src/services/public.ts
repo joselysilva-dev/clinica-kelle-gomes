@@ -59,3 +59,9 @@ export async function listCategories() {
   const response = await apiClient.get('/categories');
   return response.data as Array<{ id: number; name: string; slug: string }>;
 }
+
+export type PreferredPeriod = 'MORNING' | 'AFTERNOON' | 'ANY';
+export type AppointmentOptions = { procedures: Array<{ id: number; name: string }>; city_schedules: Array<{ id: number; city: string; schedule_date: string }> };
+export type AppointmentRequestPayload = { name:string;phone:string;procedure_id:number;city_schedule_id:number;preferred_date?:string;preferred_period:PreferredPeriod;notes?:string;consent:true;privacy_policy_version:string };
+export async function getAppointmentOptions(){const response=await apiClient.get<AppointmentOptions>('/public/appointment-options');return response.data}
+export async function createAppointmentRequest(payload:AppointmentRequestPayload){const response=await apiClient.post<{id:number}>('/public/appointments',payload);return response.data}

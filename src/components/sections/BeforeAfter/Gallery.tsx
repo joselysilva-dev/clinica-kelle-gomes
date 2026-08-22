@@ -1,36 +1,3 @@
-﻿import { useState } from "react";
-import styles from "./Gallery.module.css";
-import { GalleryGrid } from "./GalleryGrid";
-import { GalleryModal } from "./GalleryModal";
-import { galleryData } from "./gallery.data";
-import type { GalleryItemData } from "./types";
-
-export function Gallery() {
-  const [selectedItem, setSelectedItem] =
-    useState<GalleryItemData | null>(null);
-
-  const handleOpen = (item: GalleryItemData) => {
-    setSelectedItem(item);
-  };
-
-  const handleClose = () => {
-    setSelectedItem(null);
-  };
-
-  return (
-    <>
-      <div className={styles.gallery}>
-        <GalleryGrid
-          items={galleryData}
-          onSelect={handleOpen}
-        />
-      </div>
-
-      <GalleryModal
-        item={selectedItem}
-        open={selectedItem !== null}
-        onClose={handleClose}
-      />
-    </>
-  );
-}
+﻿import{useState}from"react";import{Camera,ImagePlus,Sparkles}from"lucide-react";import{WHATSAPP_MESSAGES,whatsappUrl}from"@/constants/contact";import styles from"./Gallery.module.css";import{GalleryGrid}from"./GalleryGrid";import{GalleryModal}from"./GalleryModal";import{galleryData}from"./gallery.data";import type{GalleryItemData}from"./types";
+const emptyCards=[[Camera,"Registros reais","Casos documentados e publicados somente com autorização."],[Sparkles,"Curadoria responsável","Uma seleção preparada para apresentar cada resultado com contexto."],[ImagePlus,"Em atualização","Novos conteúdos serão adicionados a esta galeria em breve."]] as const;
+export function Gallery(){const[selectedItem,setSelectedItem]=useState<GalleryItemData|null>(null);const hasRealResults=galleryData.some(item=>item.slug!=="galeria-em-breve");if(!hasRealResults)return <div className={styles.emptyState}><div className={styles.emptyGrid}>{emptyCards.map(([Icon,title,text])=><article key={title}><Icon aria-hidden="true"/><h3>{title}</h3><p>{text}</p></article>)}</div><a href={whatsappUrl(WHATSAPP_MESSAGES.consultation)} target="_blank" rel="noopener noreferrer">Quero uma avaliação</a></div>;return <><div className={styles.gallery}><GalleryGrid items={galleryData} onSelect={setSelectedItem}/></div><GalleryModal item={selectedItem} open={selectedItem!==null} onClose={()=>setSelectedItem(null)}/></>}

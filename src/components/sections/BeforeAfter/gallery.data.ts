@@ -1,3 +1,4 @@
-import before from "@/assets/before-after/placeholder-before.webp";import after from "@/assets/before-after/placeholder-after.webp";import type{GalleryItemData}from "./types";
-// TODO: substituir apenas por registros reais e autorizados.
-export const galleryData:GalleryItemData[]=[{id:1,slug:"galeria-em-breve",category:"Galeria",title:"Resultados em breve",description:"Espaço preparado para receber registros reais, autorizados e contextualizados.",cover:after,before,after,procedures:["Conteúdo demonstrativo"]}];
+﻿import logo from"@/assets/logos/logo-dra-kelle-gomes.png";
+import type{GalleryItemData}from"./types";
+// Estrutura técnica preservada até a inclusão de registros reais autorizados.
+export const galleryData:GalleryItemData[]=[{id:1,slug:"galeria-em-breve",category:"Galeria",title:"Resultados em breve",description:"Espaço preparado para receber registros reais e autorizados.",cover:logo,before:logo,after:logo,procedures:[]}];
